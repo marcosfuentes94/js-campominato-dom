@@ -1,78 +1,171 @@
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    font-family: 'Press Start 2P', Arial, Helvetica, sans-serif;
-    background-image: url(https://images2.alphacoders.com/966/thumb-1920-966316.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-  #container {
-    text-align: center;
-  }
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+margin: 0;
+font-family: 'Press Start 2P', Arial, Helvetica, sans-serif;
+background-image: url(https://rare-gallery.com/mocahbig/397577-wallpaper-rog-8-bit-pixel-logo-night-city-4k.jpg);
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+}
+#container {
+text-align: center;
+}
 
-  h1 {
-    color: #50d19d;
-    margin-bottom: 20px;
-  }
+h1 {
+color: #50d19d;
+margin-bottom: 20px;
+font-size: 36px;
+font-weight: bold;
+text-align: center;
+text-transform: uppercase;
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.919);
+}
+#difficulty {
+margin-bottom: 20px;
+}
 
-  #difficulty {
-    margin-bottom: 20px;
-  }
+.difficulty-button {
+padding: 10px 20px;
+background-color: #fe0438;
+color: #fff;
+border: none;
+border-radius: 5px;
+font-size: 14px;
+font-family: 'Press Start 2P', Arial, Helvetica, sans-serif;
+cursor: pointer;
+margin: 0 5px;
+transition: 0.3s ease;
+text-transform: uppercase;
+box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+}
 
-  .difficulty-button {
-    padding: 10px 20px;
-    background-color: #1b453e;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 10px;
-    font-family: 'Press Start 2P', Arial, Helvetica, sans-serif;
-    cursor: pointer;
-    margin: 0 5px;
-    transition: background-color 0.3s ease;
-  }
+.difficulty-button:hover {
+background-color: #e223ba;
+transform: translateY(-1px);
+box-shadow: 0 6px 6px rgba(0, 0, 0, 0.3);
+}
 
-  .difficulty-button:hover {
-    background-color: #555;
-  }
+.difficulty-button:active {
+transform: translateY(1px);
+box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
 
-  #game {
-    border: 1px solid #333;
-    display: inline-block;
-    padding: 5px;
-  }
+#game {
 
-  .row {
-    display: flex;
-  }
+display: inline-block;
+}
 
-  .cell {
-    width: 30px;
-    height: 30px;
-    border: 1px solid #d31616;
-    background-color: #ccc;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
+.row {
+display: flex;
+}
 
-  .cell.clicked {
-    background-color: #e74c3c;
-  }
+.cell {
+width: 40px;
+height: 40px;
+border: 2px solid #e70241;
+background-color: #50d19d83;
+color: #ffffff;
+font-weight: bold;
+display: flex;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+transition: background-color 0.3s ease;
+position: relative;
+overflow: hidden;
+}
 
- 
+.cell::before {
+content: "";
+position: absolute;
+top: -100%;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: #fff;
+opacity: 0;
+transition: opacity 0.3s ease;
+z-index: 1;
+}
 
-  .cell.revealed {
-    background-color: #fff;
-  }
+.cell:hover {
+background-color: #f622c572;
+}
 
-  .cell.revealed:hover {
-    background-color: #eee;
-  }
+.cell:hover::before {
+opacity: 0.1;
+}
+
+.cell.clicked {
+background-color: #a9013f;
+}
+
+
+
+.cell.revealed {
+background-color: #e223b982;
+}
+
+.cell.revealed:hover {
+background-color: #eee;
+}
+#game-over {
+display: none;
+font-size: 24px;
+text-align: center;
+font-weight: bold;
+margin-top: 60px;
+margin-bottom: 70px;
+color: #eeeeee;
+}
+a{
+font-family: 'Press Start 2P';
+font-size: 10px;
+color: #fff;
+text-align: center;
+position: absolute;
+bottom: 5%;
+cursor: pointer;
+left: 50%;
+transform: translate(-50%,-50%);
+color: #6b3b6e;
+text-shadow: 0 0 5px #ec41bf, 0 0 10px #8606b6, 0 0     15px #fff, 0 0 20px #50d19d, 0 0 25px #50d19d;
+-webkit-text-fill-color: #F4ECFF;
+-webkit-text-stroke-color: #C546F7;
+-webkit-text-stroke-width: 0;
+text-decoration:none;
+}
+
+.parpadea {
+
+animation-name: parpadeo;
+animation-duration: 1s;
+animation-timing-function: linear;
+animation-iteration-count: infinite;
+
+-webkit-animation-name:parpadeo;
+-webkit-animation-duration: 3s;
+-webkit-animation-timing-function: linear;
+-webkit-animation-iteration-count: infinite;
+}
+
+@-moz-keyframes parpadeo{
+0% { opacity: 1; }
+50% { opacity: 0; }
+100% { opacity: 1; }
+}
+
+@-webkit-keyframes parpadeo {
+0% { opacity: 1.0; }
+50% { opacity: 0.0; }
+100% { opacity: 1.0; }
+}
+
+@keyframes parpadeo {
+0% { opacity: 1.0; }
+50% { opacity: 0.0; }
+100% { opacity: 1.0; }
+}
