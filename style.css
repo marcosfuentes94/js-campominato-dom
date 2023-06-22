@@ -1,0 +1,78 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Press Start 2P', Arial, Helvetica, sans-serif;
+    background-image: url(https://images2.alphacoders.com/966/thumb-1920-966316.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  #container {
+    text-align: center;
+  }
+
+  h1 {
+    color: #50d19d;
+    margin-bottom: 20px;
+  }
+
+  #difficulty {
+    margin-bottom: 20px;
+  }
+
+  .difficulty-button {
+    padding: 10px 20px;
+    background-color: #1b453e;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 10px;
+    font-family: 'Press Start 2P', Arial, Helvetica, sans-serif;
+    cursor: pointer;
+    margin: 0 5px;
+    transition: background-color 0.3s ease;
+  }
+
+  .difficulty-button:hover {
+    background-color: #555;
+  }
+
+  #game {
+    border: 1px solid #333;
+    display: inline-block;
+    padding: 5px;
+  }
+
+  .row {
+    display: flex;
+  }
+
+  .cell {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #d31616;
+    background-color: #ccc;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .cell.clicked {
+    background-color: #e74c3c;
+  }
+
+ 
+
+  .cell.revealed {
+    background-color: #fff;
+  }
+
+  .cell.revealed:hover {
+    background-color: #eee;
+  }
