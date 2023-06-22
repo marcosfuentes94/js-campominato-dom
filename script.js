@@ -76,3 +76,39 @@ function generateBombIndices(numRows, numCols) {
       gameContainer.appendChild(rowElement);
     }
   }
+  // GESTISCE IL CLICK SU UNA CELLA DEL GIOCO
+function handleCellClick(event) {
+    if (gameEnded) {
+      return;
+    }
+  
+    const row = parseInt(event.target.dataset.row);
+    const col = parseInt(event.target.dataset.col);
+    const cell = grid[row][col];
+  
+  // SE LA CELLA È GIÀ STATA RIVELATA, NON FARE NULLA
+    if (cell.isRevealed) {
+      return;
+    }
+  
+  // SE LA CELLA CONTIENE UNA MINA, MOSTRA UN MESSAGGIO DI SCONFITTA
+    if (cell.isMine) {
+      event.target.classList.add('clicked');
+      endGame(false);
+    } else {
+      event.target.classList.add('revealed');
+      cell.isRevealed = true;
+      const count = countAdjacentMines(row, col);
+      event.target.textContent = count;
+  
+  // SE NON CI SONO MINE ADIACENTI, RIVELA LE CELLE ADIACENTI
+      if (count === 0) {
+        revealAdjacentCells(row, col);
+      }
+    }
+  
+    // SE TUTTE LE CELLE NON-MINE SONO STATE RIVELATE, MOSTRA UN MESSAGGIO DI VITTORIA
+    if (checkWin()) {
+      endGame(true);
+    }
+  }
