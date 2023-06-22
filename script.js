@@ -112,3 +112,64 @@ function handleCellClick(event) {
       endGame(true);
     }
   }
+  // CONTA IL NUMERO DI MINE ADIACENTI A UNA DETERMINATA CELLA
+function countAdjacentMines(row, col) {
+    let count = 0;
+  
+    for (let i = -1; i <= 1; i++) {
+      for (let j = -1; j <= 1; j++) {
+        if (i === 0 && j === 0) {
+          continue;
+        }
+  
+        const newRow = row + i;
+        const newCol = col + j;
+  
+        if (isValidCell(newRow, newCol) && grid[newRow][newCol].isMine) {
+          count++;
+        }
+      }
+    }
+  
+    return count;
+  }
+  
+  // RIVELA LE CELLE ADIACENTI A UNA DETERMINATA CELLA
+  function revealAdjacentCells(row, col) {
+    for (let i = -1; i <= 1; i++) {
+      for (let j = -1; j <= 1; j++) {
+        if (i === 0 && j === 0) {
+          continue;
+        }
+  
+        const newRow = row + i;
+        const newCol = col + j;
+  
+        if (isValidCell(newRow, newCol) && !grid[newRow][newCol].isRevealed) {
+          const cellElement = document.querySelector(`.cell[data-row="${newRow}"][data-col="${newCol}"]`);
+          cellElement.click();
+        }
+      }
+    }
+  }
+  // VERIFICA SE IL GIOCATORE HA VINTO IL GIOCO
+function checkWin() {
+    let nonMineCellsRevealed = 0;
+  
+    for (let i = 0; i < rows; i++) {
+      for (let j = 0; j < cols; j++) {
+        if (!grid[i][j].isMine && grid[i][j].isRevealed) {
+          nonMineCellsRevealed++;
+        }
+      }
+    }
+  
+    const totalNonMineCells = rows * cols - bombs;
+    return nonMineCellsRevealed === totalNonMineCells;
+  }
+  
+  // VERIFICA SE UNA CELLA È VALIDA ALL'INTERNO DELLA GRIGLIA DI GIOCO
+  function isValidCell(row, col) {
+    return row >= 0 && row < rows && col >= 0 && col < cols;
+  }
+  
